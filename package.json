@@ -1,0 +1,24 @@
+{
+  "name": "mbti-text-classification",
+  "version": "1.0.0",
+  "description": "A machine learning model that predicts MBTI personality types from social media posts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viatche-slav/mbti-text-classification.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/viatche-slav/mbti-text-classification/issues"
+  },
+  "homepage": "https://github.com/viatche-slav/mbti-text-classification#readme",
+  "devDependencies": {
+    "prettier": "^3.8.1"
+  }
+}
