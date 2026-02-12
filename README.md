@@ -76,7 +76,7 @@ poetry run mlflow server --host 127.0.0.1 --port 8080
 ### Обучение DistilBERT
 
 ```bash
-poetry run mbti-cli train --model_type=distilbert training.epochs=5 seed=123
+poetry run mbti-cli train --model_type=distilbert --training.epochs=5 --seed=123
 ```
 
 ### Обучение Logistic Regression
@@ -91,10 +91,9 @@ poetry run mbti-cli train --model_type=logistic_regression
 
 - **Модель**: `models/distilbert.ckpt` или `models/logistic_regression.pkl`
 - **Графики**:
-  - `plots/class_distribution.png` - распределение классов
-  - `plots/training_curves.png` - кривые обучения (loss/accuracy)
-  - `plots/distilbert_confusion_matrix.png` - матрица ошибок
-- **MLflow**: эксперименты в `mlruns/`, артефакты в `mlartifacts/`
+  - `class_distribution`
+  - `training_curves`
+  - `confusion_matrix`
 
 ---
 
