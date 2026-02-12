@@ -20,9 +20,9 @@ def create_app(cfg: DictConfig):
         model = DistilBERTClassifier.load_from_checkpoint(checkpoint_path)
         model.eval()
         error_msg = None
-    except Exception as e:
+    except Exception as error:
         model = None
-        error_msg = f"Failed to load model: {str(e)}"
+        error_msg = f"Failed to load model: {str(error)}"
         print(f"ERROR: {error_msg}")
 
     app = FastAPI(title="MBTI Text Classifier")

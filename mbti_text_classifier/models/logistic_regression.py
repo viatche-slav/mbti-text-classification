@@ -43,24 +43,24 @@ class LogisticRegressionClassifier:
         x_train_vec = self.vectorizer.fit_transform(x_train)
         self.model.fit(x_train_vec, y_train_encoded)
 
-    def predict(self, x):
-        if isinstance(x, str):
-            x = [x]
-        x_vec = self.vectorizer.transform(x)
-        y_pred_encoded = self.model.predict(x_vec)
+    def predict(self, input_data):
+        if isinstance(input_data, str):
+            input_data = [input_data]
+        input_data_vec = self.vectorizer.transform(input_data)
+        y_pred_encoded = self.model.predict(input_data_vec)
         y_pred = [self.label_decoder[idx] for idx in y_pred_encoded]
 
         return y_pred[0] if len(y_pred) == 1 else y_pred
 
-    def predict_proba(self, x):
-        if isinstance(x, str):
-            x = [x]
-        x_vec = self.vectorizer.transform(x)
+    def predict_proba(self, input_data):
+        if isinstance(input_data, str):
+            input_data = [input_data]
+        input_data_vec = self.vectorizer.transform(input_data)
 
-        return self.model.predict_proba(x_vec)
+        return self.model.predict_proba(input_data_vec)
 
-    def evaluate(self, x, y_true):
-        y_pred = self.predict(x)
+    def evaluate(self, input_data, y_true):
+        y_pred = self.predict(input_data)
         y_true_encoded = np.array([self.label_encoder[label] for label in y_true])
         y_pred_encoded = np.array([self.label_encoder[label] for label in y_pred])
 
@@ -80,7 +80,7 @@ class LogisticRegressionClassifier:
     def save(self, path):
         path = Path(path)
         path.parent.mkdir(parents=True, exist_ok=True)
-        with open(path, "wb") as f:
+        with open(path, "wb") as model_file:
             pickle.dump(
                 {
                     "model": self.model,
@@ -89,13 +89,13 @@ class LogisticRegressionClassifier:
                     "label_decoder": self.label_decoder,
                     "num_labels": self.num_labels,
                 },
-                f,
+                model_file,
             )
 
     @classmethod
     def load(cls, path):
-        with open(path, "rb") as f:
-            data = pickle.load(f)
+        with open(path, "rb") as model_file:
+            data = pickle.load(model_file)
         instance = cls.__new__(cls)
         instance.model = data["model"]
         instance.vectorizer = data["vectorizer"]

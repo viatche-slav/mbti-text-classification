@@ -43,9 +43,15 @@ class DistilBERTClassifier(pl.LightningModule):
         return loss
 
     def on_train_epoch_end(self):
-        all_preds = torch.cat([x["preds"] for x in self.training_step_outputs])
-        all_labels = torch.cat([x["labels"] for x in self.training_step_outputs])
-        avg_loss = torch.stack([x["loss"] for x in self.training_step_outputs]).mean()
+        all_preds = torch.cat(
+            [step_output["preds"] for step_output in self.training_step_outputs]
+        )
+        all_labels = torch.cat(
+            [step_output["labels"] for step_output in self.training_step_outputs]
+        )
+        avg_loss = torch.stack(
+            [step_output["loss"] for step_output in self.training_step_outputs]
+        ).mean()
 
         all_preds = all_preds.cpu().numpy()
         all_labels = all_labels.cpu().numpy()
@@ -80,9 +86,15 @@ class DistilBERTClassifier(pl.LightningModule):
         return loss
 
     def on_validation_epoch_end(self):
-        all_preds = torch.cat([x["preds"] for x in self.validation_step_outputs])
-        all_labels = torch.cat([x["labels"] for x in self.validation_step_outputs])
-        avg_loss = torch.stack([x["loss"] for x in self.validation_step_outputs]).mean()
+        all_preds = torch.cat(
+            [step_output["preds"] for step_output in self.validation_step_outputs]
+        )
+        all_labels = torch.cat(
+            [step_output["labels"] for step_output in self.validation_step_outputs]
+        )
+        avg_loss = torch.stack(
+            [step_output["loss"] for step_output in self.validation_step_outputs]
+        ).mean()
 
         all_preds = all_preds.cpu().numpy()
         all_labels = all_labels.cpu().numpy()

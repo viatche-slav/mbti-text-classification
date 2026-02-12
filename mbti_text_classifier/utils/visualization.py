@@ -35,17 +35,17 @@ def save_class_distribution(y_train, y_val, class_names, save_path):
     train_counts = pd.Series(y_train).value_counts().reindex(class_names, fill_value=0)
     val_counts = pd.Series(y_val).value_counts().reindex(class_names, fill_value=0)
 
-    x = np.arange(len(class_names))
+    x_positions = np.arange(len(class_names))
     width = 0.35
 
     fig, ax = plt.subplots(figsize=(14, 6))
-    ax.bar(x - width / 2, train_counts, width, label="Train")
-    ax.bar(x + width / 2, val_counts, width, label="Validation")
+    ax.bar(x_positions - width / 2, train_counts, width, label="Train")
+    ax.bar(x_positions + width / 2, val_counts, width, label="Validation")
 
     ax.set_xlabel("Class")
     ax.set_ylabel("Count")
     ax.set_title("Class Distribution")
-    ax.set_xticks(x)
+    ax.set_xticks(x_positions)
     ax.set_xticklabels(class_names, rotation=45, ha="right")
     ax.legend()
     plt.tight_layout()
