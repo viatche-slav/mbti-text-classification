@@ -28,5 +28,5 @@ def export_tensorrt(cfg, onnx_path, output_path):
 
     try:
         subprocess.run(cmd, check=True, capture_output=True, text=True)
-    except subprocess.CalledProcessError as e:
-        raise RuntimeError(f"TensorRT conversion failed: {e.stderr}")
+    except subprocess.CalledProcessError as error:
+        raise RuntimeError(f"TensorRT conversion failed: {error.stderr}")
