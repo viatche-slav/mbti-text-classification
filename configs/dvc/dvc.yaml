@@ -1,0 +1,3 @@
+use_dvc: true
+remote: local
+auto_pull: true

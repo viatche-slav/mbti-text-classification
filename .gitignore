@@ -208,3 +208,26 @@ __marimo__/
 
 .DS_Store
 node_modules/
+
+# Project-specific
+/models/
+/plots/
+/data/raw/
+
+# MLflow & DVC
+mlruns/
+mlartifacts/
+mlflow.db
+storage/
+outputs/
+
+# Model files
+*.onnx
+*.trt
+*.engine
+*.pth
+*.ckpt
+
+# Training artifacts
+lightning_logs/
+[0-9]*/

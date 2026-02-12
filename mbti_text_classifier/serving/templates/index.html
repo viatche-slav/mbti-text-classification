@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MBTI Text Classifier</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      h2 {
+        color: #333;
+      }
+      form {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      .result {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+      .mbti-type {
+        font-size: 32px;
+        font-weight: bold;
+        color: #4caf50;
+        margin: 10px 0;
+      }
+      .confidence {
+        font-size: 18px;
+        color: #666;
+      }
+      .top-predictions {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #ddd;
+      }
+      .prediction-item {
+        padding: 8px;
+        margin: 5px 0;
+        background-color: #f9f9f9;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>MBTI Personality Type Classifier</h2>
+    <p>Enter text from social media posts to predict the MBTI personality type.</p>
+
+    <form method="post" action="/predict">
+      <textarea
+        name="text"
+        rows="8"
+        cols="80"
+        placeholder="Enter text here (e.g., social media posts, messages)..."
+        required
+      ></textarea
+      ><br />
+      <button type="submit">Predict MBTI Type</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+      <h3>Prediction Result</h3>
+      <div class="mbti-type">{{ result.type }}</div>
+      <div class="confidence">Confidence: {{ result.confidence }}</div>
+
+      <div class="top-predictions">
+        <h4>Top 3 Predictions:</h4>
+        {% for pred in result.top_3 %}
+        <div class="prediction-item">
+          <strong>{{ pred.type }}</strong>: {{ pred.probability }}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,7 @@
+type: distilbert
+name: distilbert-base-uncased
+save_file: distilbert.ckpt
+onnx_path: distilbert.onnx
+
+lr: 2e-5
+weight_decay: 0.01

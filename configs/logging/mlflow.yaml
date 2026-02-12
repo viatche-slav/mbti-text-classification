@@ -1,0 +1,18 @@
+tracking_uri: http://127.0.0.1:8080
+
+log:
+  metrics: true
+  params: true
+  model: true
+  artifacts: true
+  git_commit: true
+
+metrics:
+  - train_loss
+  - val_loss
+  - val_accuracy
+  - val_f1_macro
+  - val_precision_macro
+  - val_recall_macro
+
+log_every_n_steps: 10

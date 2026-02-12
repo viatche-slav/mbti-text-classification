@@ -1,0 +1,5 @@
+output_dir: models
+precision: fp16
+max_batch_size: 32
+min_batch_size: 1
+opt_batch_size: 8
