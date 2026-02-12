@@ -1,0 +1,18 @@
+defaults:
+  - config
+  - _self_
+
+training:
+  epochs: 10
+  max_epochs: 10
+  gradient_clip_val: 1.0
+  accumulate_grad_batches: 1
+  cv_folds: 5
+
+run_name: ${models.name}_${now:%Y-%m-%d_%H-%M-%S}
+
+hydra:
+  run:
+    dir: ${paths.model_dir}/${experiment_name}/${now:%Y-%m-%d_%H-%M-%S}
+  job:
+    chdir: false

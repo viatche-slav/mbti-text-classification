@@ -1,0 +1,14 @@
+defaults:
+  - config
+  - _self_
+
+model:
+  name: ${models.name}
+  max_length: ${data.tokenizer.max_length}
+  checkpoint_path: ${paths.model_dir}/${models.save_file}
+
+server:
+  host: 0.0.0.0
+  port: 8000
+
+mbti_types: ${data.class_names}

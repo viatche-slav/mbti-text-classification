@@ -1,0 +1,16 @@
+defaults:
+  - data: mbti
+  - models: distilbert
+  - logging: mlflow
+  - dvc: dvc
+  - _self_
+
+seed: 227
+device: mps
+
+paths:
+  data_dir: data/raw
+  model_dir: models
+  plots_dir: plots
+
+experiment_name: mbti-classification

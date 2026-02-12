@@ -1,0 +1,9 @@
+output_dir: models
+opset_version: 14
+dynamic_axes:
+  input_ids:
+    0: batch
+  attention_mask:
+    0: batch
+  logits:
+    0: batch

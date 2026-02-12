@@ -1,0 +1,44 @@
+name: mbti
+data_file: data/raw/mbti_1.csv
+download_url: https://drive.google.com/uc?export=download&id=1pV09cvKJkPwGLTltIRIoRAFmafxxTbO0
+
+text_column: posts
+target_column: type
+
+tokenizer:
+  max_length: 512
+  padding: max_length
+  truncation: true
+
+dataloader:
+  shuffle_train: true
+  shuffle_val: false
+
+split:
+  train_size: 0.70
+  val_size: 0.15
+  test_size: 0.15
+  stratify: true
+
+batch_size: 16
+num_workers: 4
+pin_memory: true
+
+num_classes: 16
+class_names:
+  - INFP
+  - INFJ
+  - INTP
+  - INTJ
+  - ENFP
+  - ENFJ
+  - ENTP
+  - ENTJ
+  - ISFP
+  - ISFJ
+  - ISTP
+  - ISTJ
+  - ESFP
+  - ESFJ
+  - ESTP
+  - ESTJ
